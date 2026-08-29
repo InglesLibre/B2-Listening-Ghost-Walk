@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Ghost Walk – Listening Activity B2</title>
+    <style>
+        /* --- AceLingua Colors --- */
+        :root {
+            --red: #ff0000ff;
+            --school-bus-yellow: #fdc20aff;
+            --baltic-blue: #065e93ff;
+            --pure-red: #f70000ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f4f6f9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.5rem 2.8rem;
+            box-shadow: 0 20px 60px rgba(6, 94, 147, 0.15);
+            border-top: 8px solid var(--baltic-blue);
+            margin: 1rem auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--baltic-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #4a5c6e;
+            margin-left: 0.5rem;
+        }
+
+        .subhead {
+            color: #2c3e50;
+            border-left: 6px solid var(--school-bus-yellow);
+            padding-left: 1rem;
+            margin-bottom: 1.8rem;
+            font-size: 1.05rem;
+            background: #fafbfc;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+        }
+
+        .audio-section {
+            background: #f0f4fa;
+            padding: 1.5rem 2rem;
+            border-radius: 18px;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 2px dashed var(--baltic-blue);
+        }
+
+        .audio-section audio {
+            width: 100%;
+            max-width: 400px;
+            outline: none;
+        }
+
+        .audio-section audio:focus {
+            outline: 2px solid var(--school-bus-yellow);
+            border-radius: 8px;
+        }
+
+        .pre-listening {
+            background: #f9fafc;
+            padding: 1.2rem 1.8rem;
+            border-radius: 14px;
+            border-left: 6px solid var(--school-bus-yellow);
+            margin-bottom: 2rem;
+        }
+
+        .pre-listening p {
+            font-size: 1.05rem;
+            color: #1e2a36;
+        }
+
+        .pre-listening strong {
+            color: var(--baltic-blue);
+        }
+
+        .question-block {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e9edf2;
+        }
+
+        .question-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: var(--baltic-blue);
+            margin-bottom: 0.6rem;
+            font-size: 1.05rem;
+        }
+
+        .options label {
+            display: block;
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 0.3rem;
+            border-radius: 10px;
+            background: #f9fafc;
+            border: 2px solid transparent;
+            transition: background 0.15s, border-color 0.15s;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .options label:hover {
+            background: #eef2f7;
+            border-color: #d0d9e4;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 0.6rem;
+            accent-color: var(--baltic-blue);
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        .options input[type="radio"]:checked + span {
+            font-weight: 600;
+        }
+
+        .options label.correct-answer {
+            background: #e6f5ed;
+            border-color: #0f7b3a;
+        }
+
+        .options label.wrong-answer {
+            background: #fde8e8;
+            border-color: var(--pure-red);
+        }
+
+        /* --- Buttons --- */
+        .actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.8rem 2.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 60px;
+            background: var(--baltic-blue);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            box-shadow: 0 6px 18px rgba(6, 94, 147, 0.25);
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(6, 94, 147, 0.3);
+            background: #074f7a;
+        }
+
+        .btn:active {
+            transform: translateY(0px);
+        }
+
+        .btn-reset {
+            background: #e0e5ec;
+            color: #1e2a36;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-reset:hover {
+            background: #d0d7e0;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- Score --- */
+        .score {
+            text-align: center;
+            margin-top: 1.8rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--baltic-blue);
+            background: #eff3f8;
+            padding: 0.75rem 1.5rem;
+            border-radius: 60px;
+            display: inline-block;
+            min-width: 160px;
+        }
+
+        .score-wrap {
+            text-align: center;
+        }
+
+        .score span {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--pure-red);
+        }
+
+        .footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6b7d8e;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+        }
+
+        .footer a {
+            color: var(--baltic-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            .audio-section,
+            .pre-listening {
+                padding: 1rem;
+            }
+            .question-text {
+                font-size: 1rem;
+            }
+            .btn {
+                padding: 0.7rem 1.8rem;
+                font-size: 1rem;
+                width: 100%;
+            }
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .options label {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            A Ghost Walk
+            <small>B2 Listening</small>
+        </h1>
+        <div class="subhead">
+            Listen to the radio interview with Alan Stanford, a ghost walk guide, and answer the questions.
+        </div>
+
+        <!-- ===== AUDIO PLAYER ===== -->
+        <div class="audio-section">
+            <audio id="audioPlayer" controls>
+                <source src="9_1.mp3" type="audio/mpeg" />
+                Your browser does not support the audio element.
+            </audio>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #4a5c6e;">
+                Audio: 9_1.mp3
+            </p>
+        </div>
+
+        <!-- ===== PRE-LISTENING TASK ===== -->
+        <div class="pre-listening">
+            <p>
+                <strong>Pre-listening:</strong>
+                What do you think happens on a ghost walk? What does the guide do?
+                Think about this before you listen.
+            </p>
+        </div>
+
+        <!-- ===== QUESTIONS ===== -->
+        <form id="quizForm">
+            <!-- Question 1 -->
+            <div class="question-block" data-q="1">
+                <div class="question-text">1. Alan says his job as a ghost walk guide has enabled him to</div>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="A" /> <span>A. become an expert on local history.</span></label>
+                    <label><input type="radio" name="q1" value="B" /> <span>B. combine his different talents.</span></label>
+                    <label><input type="radio" name="q1" value="C" /> <span>C. improve his acting skills.</span></label>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-block" data-q="2">
+                <div class="question-text">2. Alan says that participants in the ghost walks</div>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="A" /> <span>A. are never disappointed.</span></label>
+                    <label><input type="radio" name="q2" value="B" /> <span>B. want to be frightened.</span></label>
+                    <label><input type="radio" name="q2" value="C" /> <span>C. laugh at all his jokes.</span></label>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-block" data-q="3">
+                <div class="question-text">3. According to Alan, what quality enables a storyteller to frighten audiences?</div>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="A" /> <span>A. self-confidence</span></label>
+                    <label><input type="radio" name="q3" value="B" /> <span>B. a loud voice</span></label>
+                    <label><input type="radio" name="q3" value="C" /> <span>C. good timing</span></label>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-block" data-q="4">
+                <div class="question-text">4. What type of people do not usually enjoy the ghost walk so much?</div>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="A" /> <span>A. people who have not been anticipating it</span></label>
+                    <label><input type="radio" name="q4" value="B" /> <span>B. people who come as part of a group</span></label>
+                    <label><input type="radio" name="q4" value="C" /> <span>C. people who do not like surprises</span></label>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-block" data-q="5">
+                <div class="question-text">5. What does Alan say about playing different characters on the ghost walks?</div>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="A" /> <span>A. Some of the roles help to improve his mood.</span></label>
+                    <label><input type="radio" name="q5" value="B" /> <span>B. He dresses up as real people from history.</span></label>
+                    <label><input type="radio" name="q5" value="C" /> <span>C. Acting helps maintain the audience's interest.</span></label>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-block" data-q="6">
+                <div class="question-text">6. When talking about the possible existence of ghosts, Alan says that</div>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="A" /> <span>A. he respects other people's belief in ghosts.</span></label>
+                    <label><input type="radio" name="q6" value="B" /> <span>B. he believes ghosts are part of people's imagination.</span></label>
+                    <label><input type="radio" name="q6" value="C" /> <span>C. he suspects people of inventing stories to impress others.</span></label>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question-block" data-q="7">
+                <div class="question-text">7. When talking about his favourite ghost story, Alan says that</div>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="A" /> <span>A. he does not want to give all the details.</span></label>
+                    <label><input type="radio" name="q7" value="B" /> <span>B. he does not tell it on many ghost walks.</span></label>
+                    <label><input type="radio" name="q7" value="C" /> <span>C. he does not think everyone enjoys it.</span></label>
+                </div>
+            </div>
+
+            <!-- ===== ACTIONS ===== -->
+            <div class="actions">
+                <button type="button" class="btn" id="checkBtn">Check Answers</button>
+                <button type="reset" class="btn btn-reset">Reset</button>
+            </div>
+        </form>
+
+        <!-- ===== SCORE ===== -->
+        <div class="score-wrap">
+            <div class="score" id="scoreDisplay">
+                Score: <span id="scoreNum">0</span> / 7
+            </div>
+        </div>
+
+        <div class="footer">
+            <span style="color: var(--baltic-blue); font-weight:600;">AceLingua</span> &middot; B2 Listening Activity
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== ANSWER KEY =====
+            const answers = {
+                q1: 'B',
+                q2: 'B',
+                q3: 'C',
+                q4: 'A',
+                q5: 'C',
+                q6: 'A',
+                q7: 'A'
+            };
+
+            const checkBtn = document.getElementById('checkBtn');
+            const scoreSpan = document.getElementById('scoreNum');
+
+            // ===== CHECK ANSWERS =====
+            function checkAnswers() {
+                let correct = 0;
+                const questionBlocks = document.querySelectorAll('.question-block');
+
+                questionBlocks.forEach((block) => {
+                    const qName = block.dataset.q;
+                    const selected = document.querySelector(`input[name="q${qName}"]:checked`);
+                    const correctAnswer = answers[`q${qName}`];
+                    const labels = block.querySelectorAll('.options label');
+
+                    // Clear previous styling
+                    labels.forEach((label) => {
+                        label.classList.remove('correct-answer', 'wrong-answer');
+                    });
+
+                    if (selected) {
+                        const userValue = selected.value;
+                        const parentLabel = selected.closest('label');
+
+                        if (userValue === correctAnswer) {
+                            correct++;
+                            parentLabel.classList.add('correct-answer');
+                        } else {
+                            parentLabel.classList.add('wrong-answer');
+                            // Highlight the correct answer (for learning)
+                            labels.forEach((label) => {
+                                const radio = label.querySelector('input[type="radio"]');
+                                if (radio && radio.value === correctAnswer) {
+                                    label.classList.add('correct-answer');
+                                }
+                            });
+                        }
+                    } else {
+                        // If nothing selected, still show the correct answer
+                        labels.forEach((label) => {
+                            const radio = label.querySelector('input[type="radio"]');
+                            if (radio && radio.value === correctAnswer) {
+                                label.classList.add('correct-answer');
+                            }
+                        });
+                    }
+                });
+
+                scoreSpan.textContent = correct;
+            }
+
+            // ===== RESET =====
+            function resetQuiz() {
+                const allLabels = document.querySelectorAll('.options label');
+                allLabels.forEach((label) => {
+                    label.classList.remove('correct-answer', 'wrong-answer');
+                });
+                const radios = document.querySelectorAll('input[type="radio"]');
+                radios.forEach((radio) => {
+                    radio.checked = false;
+                });
+                scoreSpan.textContent = '0';
+            }
+
+            // ===== EVENT LISTENERS =====
+            checkBtn.addEventListener('click', checkAnswers);
+
+            // Reset button
+            document.querySelector('button[type="reset"]').addEventListener('click', resetQuiz);
+
+            // Optional: Auto-check on radio change? No – keep it manual for test conditions.
+
+        })();
+    </script>
+</body>
+</html>
